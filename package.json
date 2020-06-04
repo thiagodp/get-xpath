@@ -1,0 +1,26 @@
+{
+  "name": "get-xpath",
+  "version": "1.0.0",
+  "description": "Get the XPath from an HTML element",
+  "keywords": [
+    "xpath",
+    "html",
+    "element"
+  ],
+  "author": "Thiago Delgado Pinto <thiago-dp@bol.com.br>",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "all": "jest && tsc",
+    "preversion": "npm run all"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.2.3",
+    "jest": "^25.5.4",
+    "jsdom": "^16.2.2",
+    "ts-jest": "^25.5.1",
+    "typescript": "^3"
+  }
+}
