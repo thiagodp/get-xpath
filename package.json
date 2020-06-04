@@ -1,6 +1,6 @@
 {
   "name": "get-xpath",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Get the XPath from an HTML element",
   "keywords": [
     "xpath",
@@ -14,7 +14,8 @@
     "test": "jest",
     "build": "tsc",
     "all": "jest && tsc",
-    "preversion": "npm run all"
+    "preversion": "npm run all",
+    "postversion": "git push && git push --tags"
   },
   "devDependencies": {
     "@types/jest": "^25.2.3",
