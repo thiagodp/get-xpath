@@ -27,6 +27,11 @@ function getXPath( element: HTMLElement ): string;
 
 ## Usage
 
+_Notes_:
+- On NodeJS or Deno, you have to provide a way to access or to emulate the DOM.
+You can use [JSDOM](https://github.com/jsdom/jsdom) (or any other library) to do that.
+- When using TypeScript, add the value `"dom"` to the property `"lib"`of your `tsconfig.json`. Otherwise you will probably get errors.
+
 ### Browser
 
 ```html
@@ -50,7 +55,8 @@ console.log(
 ### Deno
 
 ```typescript
-import { getXPath } from 'https://github.com/thiagodp/get-xpath/blob/master/index.js';
+/// <reference lib="dom" />
+import { getXPath } from 'https://raw.githubusercontent.com/thiagodp/get-xpath/master/index.js';
 console.log(
     getXPath( document.getElementById( 'foo' ) )
 );
