@@ -1,14 +1,14 @@
 // "use strict";
-function getXPath(el) {
-    var nodeElem = el;
+function getXPath(el: any): string {
+    let nodeElem = el;
     if (nodeElem && nodeElem.id) {
         return "//*[@id=\"" + nodeElem.id + "\"]";
     }
-    var parts: string[] = [];
+    let parts: string[] = [];
     while (nodeElem && Node.ELEMENT_NODE === nodeElem.nodeType) {
-        var nbOfPreviousSiblings = 0;
-        var hasNextSiblings = false;
-        var sibling = nodeElem.previousSibling;
+        let nbOfPreviousSiblings = 0;
+        let hasNextSiblings = false;
+        let sibling = nodeElem.previousSibling;
         while (sibling) {
             if (sibling.nodeType !== Node.DOCUMENT_TYPE_NODE &&
                 sibling.nodeName === nodeElem.nodeName) {
@@ -24,8 +24,8 @@ function getXPath(el) {
             }
             sibling = sibling.nextSibling;
         }
-        var prefix = nodeElem.prefix ? nodeElem.prefix + ":" : "";
-        var nth = nbOfPreviousSiblings || hasNextSiblings
+        let prefix = nodeElem.prefix ? nodeElem.prefix + ":" : "";
+        let nth = nbOfPreviousSiblings || hasNextSiblings
             ? "[" + (nbOfPreviousSiblings + 1) + "]"
             : "";
         parts.push(prefix + nodeElem.localName + nth);
@@ -37,11 +37,11 @@ function getXPath(el) {
 /*
 // Loader
 (function () {
-    var debug = false;
-    var show = console.log.bind( console );
-    var g = globalThis || window || self;
-    var loader = function (name, dependencies, definition ) {
-        var deps = dependencies || [];
+    let debug = false;
+    let show = console.log.bind( console );
+    let g = globalThis || window || self;
+    let loader = function (name, dependencies, definition ) {
+        let deps = dependencies || [];
         // AMD
         if ( "function" === typeof g.define && g.define ) {
             debug && show( 'AMD' );
@@ -52,7 +52,7 @@ function getXPath(el) {
             debug && show( 'CommonJS' );
             // Require all the dependencies
             if ( "function" === typeof g.require && g.require ) {
-                for ( var i = 0, len = deps.length; i < len; ++i ) {
+                for ( let i = 0, len = deps.length; i < len; ++i ) {
                     g.require( deps[ i ] );
                 }
             }

@@ -7,11 +7,11 @@
 
 > 📑 Extract the XPath of an HTML element
 
-- Works on browsers (any), NodeJS and Deno.
-- JavaScript (ES5) and TypeScript.
-- No external dependencies.
-- Unit-tested.
-- Semantic Versioning.
+- Works on browsers (any), [Node](https://nodejs.org/) and [Deno](https://deno.land/)
+- JavaScript (ES5) and TypeScript
+- No external dependencies
+- Unit-tested
+- Semantic Versioning
 
 ## Install
 
@@ -27,9 +27,9 @@ function getXPath( element: HTMLElement ): string;
 
 ## Usage
 
-_Notes_:
-- On NodeJS or Deno, you have to provide a way to access or to emulate the DOM.
-You can use [JSDOM](https://github.com/jsdom/jsdom) (or any other library) to do that.
+**Notes**:
+- On [Node](https://nodejs.org/) or [Deno](https://deno.land/), you have to provide a way to accessing or emulating the DOM.
+You can use [JSDOM](https://github.com/jsdom/jsdom) (or any other library) for that.
 - When using TypeScript, add the value `"dom"` to the property `"lib"`of your `tsconfig.json`. Otherwise you will probably get errors.
 
 ### Browser
@@ -46,6 +46,7 @@ console.log(
 ### NodeJS
 
 ```javascript
+/// <reference lib="dom" />
 import { getXPath } from 'get-xpath';
 console.log(
     getXPath( document.getElementById( 'foo' ) )
