@@ -7,8 +7,8 @@
 
 > 📑 Extract the XPath of an HTML element
 
-- Works on browsers (any), [Node](https://nodejs.org/) and [Deno](https://deno.land/)
-- JavaScript (ES5) and TypeScript
+- Works on browsers, [Node](https://nodejs.org/) and [Deno](https://deno.land/)
+- JavaScript (ES6/ES2015) and TypeScript (version 1 works with ES5)
 - No external dependencies
 - Unit-tested
 - Semantic Versioning
@@ -40,7 +40,7 @@ You can use [JSDOM](https://github.com/jsdom/jsdom) (or any other library) for t
 ### Browser
 
 ```html
-<script>
+<script type="module" >
 import { getXPath } from 'https://unpkg.com/get-xpath@2/index.js';
 console.log(
     getXPath( document.getElementById( 'foo' ) )
