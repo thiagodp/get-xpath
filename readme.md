@@ -13,6 +13,11 @@
 - Unit-tested
 - Semantic Versioning
 
+## Notes
+
+- Version 2 uses [ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
+- Version 1 uses [UMD](https://github.com/umdjs/umd) (with no global declaration)
+
 ## Install
 
 ```bash
@@ -35,8 +40,8 @@ You can use [JSDOM](https://github.com/jsdom/jsdom) (or any other library) for t
 ### Browser
 
 ```html
-<script src="./node_modules/get-xpath/index.js" ></script>
 <script>
+import { getXPath } from 'https://unpkg.com/get-xpath@2/index.js';
 console.log(
     getXPath( document.getElementById( 'foo' ) )
 );
@@ -57,7 +62,7 @@ console.log(
 
 ```typescript
 /// <reference lib="dom" />
-import { getXPath } from 'https://raw.githubusercontent.com/thiagodp/get-xpath/master/index.js';
+import { getXPath } from 'https://unpkg.com/get-xpath@2/index.ts';
 console.log(
     getXPath( document.getElementById( 'foo' ) )
 );

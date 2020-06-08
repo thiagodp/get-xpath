@@ -1,5 +1,5 @@
-// "use strict";
-function getXPath(el: any): string {
+
+export function getXPath(el: any): string {
     let nodeElem = el;
     if (nodeElem && nodeElem.id) {
         return "//*[@id=\"" + nodeElem.id + "\"]";
@@ -71,5 +71,3 @@ function getXPath(el: any): string {
     return loader( "getXPath", [], { getXPath: getXPath } );
 })();
 */
-
-export { getXPath };
