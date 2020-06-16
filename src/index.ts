@@ -1,9 +1,10 @@
-export function getXPath(el) {
+
+export default function getXPath(el: any): string {
     let nodeElem = el;
     if (nodeElem && nodeElem.id) {
         return "//*[@id=\"" + nodeElem.id + "\"]";
     }
-    let parts = [];
+    let parts: string[] = [];
     while (nodeElem && Node.ELEMENT_NODE === nodeElem.nodeType) {
         let nbOfPreviousSiblings = 0;
         let hasNextSiblings = false;
@@ -32,6 +33,7 @@ export function getXPath(el) {
     }
     return parts.length ? "/" + parts.reverse().join("/") : "";
 }
+
 /*
 // Loader
 (function () {

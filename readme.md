@@ -8,15 +8,10 @@
 > 📑 Extract the XPath of an HTML element
 
 - Works on browsers, [Node](https://nodejs.org/) and [Deno](https://deno.land/)
-- JavaScript (ES6/ES2015) and TypeScript (version 1 works with ES5)
+- Works with browsers, NodeJS and DenoJS (JavaScript 5 and TypeScript)
 - No external dependencies
 - Unit-tested
 - Semantic Versioning
-
-## Notes
-
-- Version 2 uses [ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
-- Version 1 uses [UMD](https://github.com/umdjs/umd) (with no global declaration)
 
 ## Install
 
@@ -39,9 +34,20 @@ You can use [JSDOM](https://github.com/jsdom/jsdom) (or any other library) for t
 
 ### Browser
 
+Global:
+```html
+<script crossorigin src="https://unpkg.com/get-xpath" >
+<script>
+console.log(
+    getXPath( document.getElementById( 'foo' ) )
+);
+</script>
+```
+
+ESM:
 ```html
 <script type="module" >
-import { getXPath } from 'https://unpkg.com/get-xpath@2/index.js';
+import getXPath from 'https://unpkg.com/get-xpath/index.esm.js';
 console.log(
     getXPath( document.getElementById( 'foo' ) )
 );
@@ -52,7 +58,7 @@ console.log(
 
 ```javascript
 /// <reference lib="dom" />
-import { getXPath } from 'get-xpath';
+const getXPath = require('get-xpath');
 console.log(
     getXPath( document.getElementById( 'foo' ) )
 );
@@ -62,7 +68,7 @@ console.log(
 
 ```typescript
 /// <reference lib="dom" />
-import { getXPath } from 'https://unpkg.com/get-xpath@2/index.ts';
+import getXPath from 'https://unpkg.com/get-xpath/index.esm.js';
 console.log(
     getXPath( document.getElementById( 'foo' ) )
 );

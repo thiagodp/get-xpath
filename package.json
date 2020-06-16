@@ -9,18 +9,30 @@
   ],
   "author": "Thiago Delgado Pinto <thiago-dp@bol.com.br>",
   "license": "MIT",
+  "files": [
+    "index.*"
+  ],
+  "source": "src/index.ts",
   "main": "index.js",
+  "browser": "index.umd.js",
+  "unpkg": "index.umd.js",
+  "module": "index.esm.js",
+  "types": "index.d.ts",
   "scripts": {
+    "clean": "del \"index*.js\" \"*.map\" \"*.d.ts\" ",
+    "prebuild": "npm run clean",
+    "build": "microbundle --name=getXPath",
     "test": "jest",
-    "build": "tsc",
-    "all": "jest && tsc",
+    "all": "npm run test && npm run build",
     "preversion": "npm run all",
     "postversion": "git push && git push --tags"
   },
   "devDependencies": {
     "@types/jest": "^25.2.3",
+    "del-cli": "^3.0.1",
     "jest": "^26.0.1",
     "jsdom": "^16.2.2",
+    "microbundle": "^0.12.1",
     "ts-jest": "^26.1.0",
     "typescript": "^3"
   }

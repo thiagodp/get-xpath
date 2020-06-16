@@ -1,9 +1,7 @@
-// import { getXPath } from "../index";
-// ts-jest supports only modules compiled to CommonJS - not ESM !
-const X = require( '../index.ts' );
+import getXPath from "../src";
 import { JSDOM } from "jsdom";
 
-const getXPath = X.getXPath;
+// const getXPath = X.getXPath;
 
 describe( 'getXPath', () => {
 

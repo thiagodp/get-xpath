@@ -1,2 +1,7 @@
 node_modules
 .vscode
+coverage
+dist
+*.js
+*.d.ts
+*.map
