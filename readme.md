@@ -7,8 +7,7 @@
 
 > 📑 Extract the XPath of an HTML element
 
-- Works on browsers, [Node](https://nodejs.org/) and [Deno](https://deno.land/)
-- Works with browsers, NodeJS and DenoJS (JavaScript 5 and TypeScript)
+- Works with browsers, [NodeJS](https://nodejs.org/) and [DenoJS](https://deno.land/) (JavaScript 5 and TypeScript)
 - No external dependencies
 - Unit-tested
 - Semantic Versioning
