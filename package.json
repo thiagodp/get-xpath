@@ -1,6 +1,6 @@
 {
   "name": "get-xpath",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Get the XPath from an HTML element",
   "keywords": [
     "xpath",
