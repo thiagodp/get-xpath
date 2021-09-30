@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.org/thiagodp/get-xpath.svg?branch=master)](https://travis-ci.org/thiagodp/get-xpath)
-[![npm version](https://badge.fury.io/js/get-xpath.svg)](https://badge.fury.io/js/get-xpath)
-[![GitHub last commit](https://img.shields.io/github/last-commit/thiagodp/get-xpath.svg)](https://github.com/thiagodp/get-xpath/releases)
-[![npm](https://img.shields.io/npm/l/get-xpath.svg)](https://github.com/thiagodp/get-xpath/blob/master/LICENSE.txt)
+[![npm (tag)](https://img.shields.io/npm/v/get-xpath?color=green&label=NPM&style=for-the-badge)](https://github.com/thiagodp/get-xpath/releases)
+[![Build Status](https://img.shields.io/github/workflow/status/thiagodp/get-xpath/test?style=for-the-badge&color=green)](https://github.com/thiagodp/get-xpath/actions)
+[![License](https://img.shields.io/npm/l/get-xpath.svg?style=for-the-badge&color=green)](https://github.com/thiagodp/get-xpath/blob/master/LICENSE.txt)
+[![npm](https://img.shields.io/npm/dt/get-xpath?style=for-the-badge&color=green)](https://www.npmjs.com/package/get-xpath)
 
 # get-xpath
 
