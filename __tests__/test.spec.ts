@@ -20,7 +20,13 @@ describe( 'getXPath', () => {
 
         // Make Node object constants available to the global object
         // @see https://github.com/enzymejs/enzyme/blob/master/docs/guides/jsdom.md#using-enzyme-with-jsdom
-        global.Node = window.Node;
+        if ( globalThis ) {
+            globalThis.Node = window.Node;
+        // @ts-ignore
+        } else if ( global ) {
+            // @ts-ignore
+            global.Node = window.Node;
+        }
 
         document = window.document;
         // console.log( document );
