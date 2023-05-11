@@ -20,11 +20,11 @@
   "types": "index.d.ts",
   "scripts": {
     "clean": "del \"index*.js\" \"*.map\" \"*.d.ts\" ",
-    "prebuild": "npm run clean",
+    "prebuild": "pnpm run clean",
     "build": "microbundle --name=getXPath",
     "test": "jest",
-    "all": "npm run test && npm run build",
-    "preversion": "npm run all",
+    "all": "pnpm run test && pnpm run build",
+    "preversion": "pnpm run all",
     "postversion": "git push && git push --tags"
   },
   "devDependencies": {
