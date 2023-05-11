@@ -21,8 +21,30 @@ npm i get-xpath
 ## API
 
 ```typescript
-function getXPath( element: HTMLElement, options?: Partial<Options> ): string;
+function getXPath( element: HTMLElement, options?: Partial< Options > ): string;
 ```
+
+Where `options` is an optional object containing:
+
+| name       | type    | description                           |
+|------------|---------|---------------------------------------|
+| `ignoreId` | boolean | Do not take elements' ID into account |
+
+Example:
+
+```html
+<html>
+    <body>
+        <div id="x" ></div>
+        <script>
+            const div = document.getElementById( 'x' );
+            const xpath1 = getXPath( div ); // returns '//*[@id="x"]'
+            const xpath2 = getXPath( div, { ignoreId: true } ); // returns '/html/body/div'
+        </script>
+    </body>
+</html>
+```
+
 
 ## Usage
 
@@ -30,12 +52,6 @@ function getXPath( element: HTMLElement, options?: Partial<Options> ): string;
 - On [Node](https://nodejs.org/) or [Deno](https://deno.land/), you have to provide a way to accessing or emulating the DOM.
 You can use [JSDOM](https://github.com/jsdom/jsdom) (or any other library) for that.
 - When using TypeScript, add the value `"dom"` to the property `"lib"`of your `tsconfig.json`. Otherwise you will probably get errors.
-
-## Options
-
-| name       | type    | description                          |
-|------------|---------|--------------------------------------|
-| `ignoreId` | boolean | Do not take elements ID into account |
 
 
 ### Browser

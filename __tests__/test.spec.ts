@@ -49,7 +49,7 @@ describe( 'getXPath', () => {
         const e = document.createElement( 'span' );
         e.id = 'foo'
         document.body.appendChild( e );
-        const r = getXPath( e , {ignoreId: true});
+        const r = getXPath( e , { ignoreId: true } );
         expect( r ).toEqual( '/html/body/span' );
     } );
 
