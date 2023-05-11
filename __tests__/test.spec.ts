@@ -45,6 +45,14 @@ describe( 'getXPath', () => {
         expect( r ).toEqual( '//*[@id="foo"]' );
     } );
 
+    it( 'element with id and ignoreId options is on', () => {
+        const e = document.createElement( 'span' );
+        e.id = 'foo'
+        document.body.appendChild( e );
+        const r = getXPath( e , {ignoreId: true});
+        expect( r ).toEqual( '/html/body/span' );
+    } );
+
     it( 'single leaf element', () => {
         const e1 = document.createElement( 'div' );
         const e2 = document.createElement( 'span' );

@@ -1,7 +1,15 @@
+export type Options = {
+    ignoreId: boolean
+}
 
-export default function getXPath(el: any): string {
+const defaultOptions: Options = {
+    ignoreId: false
+}
+
+export default function getXPath(el: any, customOptions?: Partial<Options>): string {
+    const options = {...defaultOptions, ...customOptions}
     let nodeElem = el;
-    if (nodeElem && nodeElem.id) {
+    if (nodeElem && nodeElem.id && !options.ignoreId) {
         return "//*[@id=\"" + nodeElem.id + "\"]";
     }
     let parts: string[] = [];
