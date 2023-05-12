@@ -22,8 +22,9 @@
     "clean": "del \"index*.js\" \"*.map\" \"*.d.ts\" ",
     "prebuild": "pnpm run clean",
     "build": "microbundle --name=getXPath",
-    "test": "tsc __tests__/test.spec.ts --noEmit && jest",
-    "all": "pnpm run test && pnpm run build",
+    "check": "tsc __tests__/test.spec.ts --noEmit",
+    "test": "jest",
+    "all": "pnpm run check && pnpm run test && pnpm run build",
     "preversion": "pnpm run all",
     "postversion": "git push && git push --tags"
   },
