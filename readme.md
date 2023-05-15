@@ -1,5 +1,5 @@
 [![npm (tag)](https://img.shields.io/npm/v/get-xpath?color=green&label=NPM&style=for-the-badge)](https://github.com/thiagodp/get-xpath/releases)
-[![Build Status](https://img.shields.io/github/workflow/status/thiagodp/get-xpath/test?style=for-the-badge&color=green)](https://github.com/thiagodp/get-xpath/actions)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/thiagodp/get-xpath/test.yml?style=for-the-badge&color=green)](https://github.com/thiagodp/get-xpath/actions)
 [![License](https://img.shields.io/npm/l/get-xpath.svg?style=for-the-badge&color=green)](https://github.com/thiagodp/get-xpath/blob/master/LICENSE.txt)
 [![npm](https://img.shields.io/npm/dt/get-xpath?style=for-the-badge&color=green)](https://www.npmjs.com/package/get-xpath)
 
