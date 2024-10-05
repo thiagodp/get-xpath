@@ -112,4 +112,23 @@ describe( 'getXPath', () => {
         expect( rB ).toEqual( '/html/body/div/span[2]/button' );
     } );
 
+    it( 'element with a single text node', () => {
+        const div = document.createElement( 'div' );
+        const text = document.createTextNode( 'Hello' );
+        div.appendChild( text );
+        document.body.appendChild( div );
+        const r = getXPath( text );
+        expect( r ).toEqual( '/html/body/div/text()[1]' );
+    } );
+
+    it( 'element with two text nodes', () => {
+        const div = document.createElement( 'div' );
+        const text1 = document.createTextNode( 'Hello' );
+        const text2 = document.createTextNode( 'World' );
+        div.append( text1, text2 );
+        document.body.appendChild( div );
+        const r = getXPath( text2 );
+        expect( r ).toEqual( '/html/body/div/text()[2]' );
+    } );
+
 } );

@@ -13,15 +13,15 @@ export default function getXPath( el: any, customOptions?: Partial< Options > ):
         return "//*[@id=\"" + nodeElem.id + "\"]";
     }
     let parts: string[] = [];
-    while ( nodeElem && Node.ELEMENT_NODE === nodeElem.nodeType ) {
-        let nbOfPreviousSiblings = 0;
+    while ( nodeElem && ( Node.ELEMENT_NODE === nodeElem.nodeType || Node.TEXT_NODE === nodeElem.nodeType ) ) {
+        let numberOfPreviousSiblings = 0;
         let hasNextSiblings = false;
         let sibling = nodeElem.previousSibling;
         while ( sibling ) {
             if ( sibling.nodeType !== Node.DOCUMENT_TYPE_NODE &&
                 sibling.nodeName === nodeElem.nodeName
             ) {
-                nbOfPreviousSiblings++;
+                numberOfPreviousSiblings++;
             }
             sibling = sibling.previousSibling;
         }
@@ -34,10 +34,14 @@ export default function getXPath( el: any, customOptions?: Partial< Options > ):
             sibling = sibling.nextSibling;
         }
         let prefix = nodeElem.prefix ? nodeElem.prefix + ":" : "";
-        let nth = nbOfPreviousSiblings || hasNextSiblings
-            ? "[" + ( nbOfPreviousSiblings + 1 ) + "]"
+        let nth = numberOfPreviousSiblings || hasNextSiblings
+            ? "[" + ( numberOfPreviousSiblings + 1 ) + "]"
             : "";
-        parts.push( prefix + nodeElem.localName + nth );
+        let piece = ( nodeElem.nodeType != Node.TEXT_NODE )
+            ? prefix + nodeElem.localName + nth
+            : 'text()' + ( nth || '[1]' );
+
+        parts.push( piece );
         nodeElem = nodeElem.parentNode;
     }
     return parts.length ? "/" + parts.reverse().join( "/" ) : "";
