@@ -6,6 +6,15 @@ const defaultOptions: Options = {
     ignoreId: false
 };
 
+const isNodeAvailable = typeof Node !== 'undefined';
+
+const NodeTypes = {
+    ELEMENT_NODE        : isNodeAvailable ? Node.ELEMENT_NODE       : 1,
+    TEXT_NODE           : isNodeAvailable ? Node.TEXT_NODE          : 3,
+    DOCUMENT_TYPE_NODE  : isNodeAvailable ? Node.DOCUMENT_TYPE_NODE : 10
+};
+
+
 export default function getXPath( el: any, customOptions?: Partial< Options > ): string {
     const options = { ...defaultOptions, ...customOptions };
     let nodeElem = el;
@@ -13,12 +22,12 @@ export default function getXPath( el: any, customOptions?: Partial< Options > ):
         return "//*[@id=\"" + nodeElem.id + "\"]";
     }
     let parts: string[] = [];
-    while ( nodeElem && ( Node.ELEMENT_NODE === nodeElem.nodeType || Node.TEXT_NODE === nodeElem.nodeType ) ) {
+    while ( nodeElem && ( NodeTypes.ELEMENT_NODE === nodeElem.nodeType || NodeTypes.TEXT_NODE === nodeElem.nodeType ) ) {
         let numberOfPreviousSiblings = 0;
         let hasNextSiblings = false;
         let sibling = nodeElem.previousSibling;
         while ( sibling ) {
-            if ( sibling.nodeType !== Node.DOCUMENT_TYPE_NODE &&
+            if ( sibling.nodeType !== NodeTypes.DOCUMENT_TYPE_NODE &&
                 sibling.nodeName === nodeElem.nodeName
             ) {
                 numberOfPreviousSiblings++;
@@ -37,7 +46,7 @@ export default function getXPath( el: any, customOptions?: Partial< Options > ):
         let nth = numberOfPreviousSiblings || hasNextSiblings
             ? "[" + ( numberOfPreviousSiblings + 1 ) + "]"
             : "";
-        let piece = ( nodeElem.nodeType != Node.TEXT_NODE )
+        let piece = ( nodeElem.nodeType != NodeTypes.TEXT_NODE )
             ? prefix + nodeElem.localName + nth
             : 'text()' + ( nth || '[1]' );
 
@@ -46,41 +55,3 @@ export default function getXPath( el: any, customOptions?: Partial< Options > ):
     }
     return parts.length ? "/" + parts.reverse().join( "/" ) : "";
 }
-
-/*
-// Loader
-(function () {
-    let debug = false;
-    let show = console.log.bind( console );
-    let g = globalThis || window || self;
-    let loader = function (name, dependencies, definition ) {
-        let deps = dependencies || [];
-        // AMD
-        if ( "function" === typeof g.define && g.define ) {
-            debug && show( 'AMD' );
-            g.define( deps, definition );
-        }
-        // CommonJS
-        else if ( "object" === typeof g.module && g.module && g.module.exports ) {
-            debug && show( 'CommonJS' );
-            // Require all the dependencies
-            if ( "function" === typeof g.require && g.require ) {
-                for ( let i = 0, len = deps.length; i < len; ++i ) {
-                    g.require( deps[ i ] );
-                }
-            }
-            g.module.exports = definition;
-        }
-        // Direct browser usage
-        else if ( "object" === typeof window ) {
-            debug && show( 'browser' );
-            window[name] = definition[name];
-        }
-        // None of above
-        else {
-            debug && show( 'Could not export the library.' );
-        }
-    };
-    return loader( "getXPath", [], { getXPath: getXPath } );
-})();
-*/
