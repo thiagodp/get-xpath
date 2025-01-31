@@ -1,16 +1,14 @@
 import getXPath from "../src";
 import { JSDOM } from "jsdom";
 
-function getGlobalObject() {
-    if (typeof globalThis !== 'undefined') { return globalThis; }
-    if (typeof self !== 'undefined') { return self; }
-    if (typeof window !== 'undefined') { return window; }
-    // @ts-ignore
-    if (typeof global !== 'undefined') { return global; }
-    throw new Error('cannot find the global object');
-}
-
-// const getXPath = X.getXPath;
+// function getGlobalObject() {
+//     if (typeof globalThis !== 'undefined') { return globalThis; }
+//     if (typeof self !== 'undefined') { return self; }
+//     if (typeof window !== 'undefined') { return window; }
+//     // @ts-ignore
+//     if (typeof global !== 'undefined') { return global; }
+//     throw new Error('cannot find the global object');
+// }
 
 describe( 'getXPath', () => {
 
@@ -27,10 +25,13 @@ describe( 'getXPath', () => {
         const jsdom = new JSDOM( html );
         const { window } = jsdom;
 
-        // Make Node object constants available to the global object
-        // @see https://github.com/enzymejs/enzyme/blob/master/docs/guides/jsdom.md#using-enzyme-with-jsdom
-        let globalObject = getGlobalObject();
-        globalObject.Node = window.Node;
+        // VERSION 3.3.0 removes Node the dependency of Node type
+        // ------------------------------------------------------------------------------------------------------
+        // // Make Node object constants available to the global object
+        // // @see https://github.com/enzymejs/enzyme/blob/master/docs/guides/jsdom.md#using-enzyme-with-jsdom
+        // let globalObject = getGlobalObject();
+        // globalObject.Node = window.Node;
+        // ------------------------------------------------------------------------------------------------------
 
         document = window.document;
     } );
